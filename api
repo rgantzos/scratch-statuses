@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>replit</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  </head>
+   <style>
+      button {
+      position: relative;
+      overflow: hidden;
+      transition: background 400ms;
+      color: #fff;
+      background-color: black;
+      padding: 1rem 2rem;
+      font-family: 'roboto mono', sans-serif;
+      font-size: 1.5rem;
+      outline: 0;
+      border: 0;
+      border-radius: 0.25rem;
+      box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      }
+      span.ripple {
+      position: absolute; /* The absolute position we mentioned earlier */
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple 600ms linear;
+      background-color: rgba(255, 255, 255, 0.7);
+      }
+      @keyframes ripple {
+      to {
+      transform: scale(4);
+      opacity: 0;
+      }
+      }
+   </style>
+  <body style="font-family:roboto mono">
+    <center>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h1>
+        <span>ScratchStatus API</span>
+      </h1>
+      <h3>It's the future of Scratch.</h3>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h4>Easily upgrade your projects, whether on Scratch or external, with the new ScratchStatus API, and make your projects stand out from others! It's really easy to use, and it gives you more time to focus on the more important parts of your code, rather than getting mixed up with the complicated Scratch API.</h4>
+      <h4>The ScratchStatus API breaks the large mountain of Scratch API into smaller, easier-to-manage pieces. That way you can easily take just the information that you're looking for, and not have to rummage through all the other unimportant stuff.</h4>
+      <br>
+      <br>
+      <br>
+      <a href="https://github.com/rgantzosonscratch/scratch-api">
+      <button>View the Official Repository</button>
+      </a>
+    </center>
+    <script src="script.js"></script>
+  </body>
+     <script>
+      function createRipple(event) {
+        const button = event.currentTarget;
+      
+        const circle = document.createElement("span");
+        const diameter = Math.max(button.clientWidth, button.clientHeight);
+        const radius = diameter / 2;
+      
+        circle.style.width = circle.style.height = `${diameter}px`;
+        circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+        circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+        circle.classList.add("ripple");
+      
+        const ripple = button.getElementsByClassName("ripple")[0];
+      
+        if (ripple) {
+          ripple.remove();
+        }
+      
+        button.appendChild(circle);
+      }
+      
+      const buttons = document.getElementsByTagName("button");
+      for (const button of buttons) {
+        button.addEventListener("click", createRipple);
+      }
+   </script>
+</html>
